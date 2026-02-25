@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Muziekschool H&J</title>
+    <link rel="stylesheet" href="{% static 'style/main.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Agenda</h1>
+        <p><strong>Aankomende activiteiten</strong></p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/index/">Home</a></li>
+            <li><a href="/over-ons/">Over ons</a></li>
+            <li><a href="/tarieven/">Tarieven</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/agenda/">Agenda</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Agenda</h2>
+
+        </aside>
+
+        <main>
+            <h2 class="h2_oranje">Aankomende activiteiten</h2>
+            {% for activiteit in activiteiten %}
+            <p>
+                <strong>{{ activiteit.datum }} ({{ activiteit.begin_tijd }} - {{ activiteit.eind_tijd }})</strong>:
+                {{ activiteit.omschrijving }} - €{{ activiteit.kosten }}
+            </p>
+            {% empty %}
+            <p>Er zijn nog geen activiteiten gepland.</p>
+            {% endfor %}
+            <br><br><br><br>
+        </main>
+    </div>
+    <footer>
+        <p><strong>© Copyright 2021 Muziekschool H&J<br>
+                (Dit is een oefenopdracht, alle informatie op deze website is fictief.)</strong></p>
+    </footer>
+</body>
+
+</html>
